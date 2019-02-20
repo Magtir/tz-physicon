@@ -1,0 +1,40 @@
+<div class="page">
+  <h1>Витрина</h1>
+  <filter></filter>
+
+  <div class="main-page-size">
+    <div *ngIf="newFilterArr.searchFlag" class="title-list">Результаты поиска:</div>
+
+    <div *ngIf="newFilterArr.searchFlag && newFilterArr.list.length == 0" class="not-found">
+      Курсы не найдены
+    </div>
+
+    <div class="products-list">
+
+      <div *ngFor="let item of newFilterArr.list" class="product-item">
+
+        <div class="image">
+          <span>{{item.courseId}}</span>
+        </div>
+
+        <div class="info">
+          <div class="part-top">
+            <div class="wrapper title">{{item.title}}</div>
+            <div class="wrapper grade">{{getFormatGrade(item.grade)}}</div>
+            <div class="wrapper genre">{{item.genre}}</div>
+            <a href="#" class="wrapper more">Подробнее</a>
+          </div>
+
+          <div *ngIf="newFilterArr.selectCurrency != 'BONUS'" class="wrapper price">
+          {{item.price}} рублей
+          </div>
+
+          <div *ngIf="newFilterArr.selectCurrency == 'BONUS'" class="wrapper price">
+          {{item.priceBonus}} бонусов
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+.filter {
+  .part-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .field {
+      flex: 1 1;
+      margin: 0 11px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      @media screen and (max-width: 767px) {
+        &.field-grade {
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (max-width: 575px) {
+        flex: 0 0 100%;
+        margin: 6px 0;
+      }
+
+      &.field-title {
+        margin-right: 0;
+        padding-right: 40px;
+        position: relative;
+
+        @media screen and (max-width: 767px) {
+          flex: 0 0 100%;
+          margin-left: 0;
+          margin-top: 14px;
+        }
+
+        @media screen and (max-width: 575px) {
+          margin-top: 6px;
+        }
+      }
+
+      .button-search {
+        position: absolute;
+        content: '';
+        width: 32px;
+        height: 32px;
+        background-image: url('/assets/images/icon-search-25.png');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        top: 0;
+        right: 0;
+      }
+
+      select, input[type=text] {
+        width: 100%;
+        padding: 4px 7px;
+        height: 32px;
+        background-color: #fff;
+        border: 1px solid #706f6f;
+        font-size: 14px;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  .part-down {
+    margin-top: 15px;
+    text-align: center;
+
+    .description {
+      margin-bottom: 5px;
+    }
+
+    .field {
+      display: inline-block;
+      margin: 0 10px;
+
+      label {
+        position: relative;
+        cursor: pointer;
+
+        &:before {
+          content: '';
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border: 2px solid #706f6f;
+          margin-right: 6px;
+          margin-bottom: -3px;
+        }
+
+        &:after {
+          position: absolute;
+          content: '';
+          width: 8px;
+          height: 8px;
+          background: transparent;
+          top: 7px;
+          left: 5px;
+          transition: all 300ms;
+        }
+      }
+
+      input {
+        display: none;
+
+        &:checked {
+          +label {
+            &:after {
+              background: #706f6f;
+            }
+          }
+        }
+      }
+    }
+  }
+}

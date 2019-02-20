@@ -1,0 +1,57 @@
+<div class="filter main-page-size">
+  <div class="part-main">
+    <div class="field field-subject">
+      <select class="subject" (change)="changeFilter($event, 'subject')" title="">
+        <option value="">Все предметы</option>
+        <option *ngFor="let item of getSubjects()" value="{{ item }}">{{ item }}</option>
+      </select>
+    </div>
+
+    <div class="field field-genre">
+      <select class="genre" (change)="changeFilter($event, 'genre')" title="">
+        <option value="">Все жанры</option>
+        <option *ngFor="let item of getGenres()" value="{{ item }}">{{ item }}</option>
+      </select>
+    </div>
+
+    <div class="field field-grade">
+      <select class="grade" (change)="changeFilter($event, 'grade')" title="">
+        <option value="">Все классы</option>
+        <option *ngFor="let item of getGrades()" value="{{ item }}">{{ item }}</option>
+      </select>
+    </div>
+
+    <div class="field field-title">
+      <input #title
+             (keyup.enter)="changeFilter(title.value, 'title')"
+             (blur)="changeFilter(title.value, 'title')"
+             placeholder="Поиск" type="text">
+      <button class="button-search"(click)="changeFilter(title.value, 'title')"></button>
+    </div>
+  </div>
+
+  <div class="part-down">
+
+    <div class="description">
+      Показывать:
+    </div>
+    <div class="field">
+      <input type="radio"
+             (change)="changeCurrency($event)"
+             id="type-price-1"
+             name="type-price"
+             value="RUB"
+             checked>
+      <label for="type-price-1">Рубли</label>
+    </div>
+    <div class="field">
+      <input type="radio"
+             (change)="changeCurrency($event)"
+             id="type-price-2"
+             name="type-price"
+             value="BONUS">
+      <label for="type-price-2">Бонусы</label>
+    </div>
+  </div>
+
+</div>
