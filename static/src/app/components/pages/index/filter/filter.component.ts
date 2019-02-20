@@ -9,7 +9,10 @@ import {NewFilterService} from "./new-filter.service";
 })
 export class FilterComponent implements OnInit {
 
-  rpl: any;
+  rpl: {
+    items: any[]
+  };
+
   subjects: string[];
   genres: string[];
   grades: string[];
@@ -24,6 +27,10 @@ export class FilterComponent implements OnInit {
 
   constructor(private rs: RequestServerService, private nfs: NewFilterService) {
     this.rs.onRpl.subscribe((rpl:any) => {this.rpl = rpl; this.sort()});
+
+    this.rpl = {
+      items: []
+    };
 
     this.subjects = [];
     this.genres = [];

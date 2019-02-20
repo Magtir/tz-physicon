@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -16,7 +17,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),     // путь к каталогу выходных файлов - папка dist
     publicPath: '/',
-    // filename: '[name].[hash].js'
     filename: '[name].js'
   },
   devServer: {
@@ -47,7 +47,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file-loader?name=assets/[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.(css|sass|scss)$/,
@@ -80,6 +87,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
+    // new UglifyJSPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.LoaderOptionsPlugin({
       htmlLoader: {
